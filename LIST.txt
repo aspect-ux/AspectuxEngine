@@ -1,7 +1,0 @@
-
-
-NIGHT:
-1. Game Engine Review
-2. Basic algorithms and cpp new features,most asked questions
-3. dx11 time
-4. opengl review or game engine lore accumulating
