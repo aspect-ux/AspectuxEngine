@@ -1,8 +1,6 @@
 # AspectuxEngine
 
-```
-![Language](https://img.shields.io/badge/language-c++17-brightgreen)  #静态图标
-```
+https://img.shields.io/badge/language-c++-blue
 
 ## Introduction
 
