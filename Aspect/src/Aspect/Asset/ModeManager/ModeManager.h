@@ -1,0 +1,62 @@
+#pragma once
+
+#include "Aspect/Core/Base/PublicSingleton.h"
+
+namespace Aspect
+{
+	// From UE4.27.2
+	// TODO
+	enum class EditMode
+	{
+		Select = 0,
+		Landscape = 1,
+		Foliage = 2,
+		BrushEditing = 3,
+		MeshPaint = 4
+	};
+
+	enum class SceneMode
+	{
+		None = 0,
+		EnvironmentHdr = 1,
+		SkyBox = 2,
+	};
+
+	enum class PhysicsDebugDrawModeFlag
+	{
+		Aspect_NoDebug = 0,
+		Aspect_DrawWireframe = 1,
+		Aspect_DrawAabb = 2,
+		Aspect_DrawFeaturesText = 4,
+		Aspect_DrawContactPoints = 8,
+		Aspect_NoDeactivation = 16,
+		Aspect_NoHelpText = 32,
+		Aspect_DrawText = 64,
+		Aspect_ProfileTimings = 128,
+		Aspect_EnableSatComparison = 256,
+		Aspect_DisableBulletLCP = 512,
+		Aspect_EnableCCD = 1024,
+		Aspect_DrawConstraints = (1 << 11),
+		Aspect_DrawConstraintLimits = (1 << 12),
+		Aspect_FastWireframe = (1 << 13),
+		Aspect_DrawNormals = (1 << 14),
+		Aspect_DrawFrames = (1 << 15),
+		Aspect_MAX_DEBUG_DRAW_MODE
+	};
+
+	class ModeManager final : public PublicSingleton<ModeManager>
+	{
+	public:
+		static bool IsEditState() { return ModeManager::GetInstance().bEditState; }
+		static void ChangeState() { ModeManager::GetInstance().bEditState = !ModeManager::GetInstance().bEditState; }
+	public:
+		static int b3DMode;  // 0 for 2D, 1 for 3D
+		static bool bHdrUse;
+		static SceneMode mSceneMode;
+		static bool bShowPhysicsColliders;
+		static PhysicsDebugDrawModeFlag mPhysicsDebugDrawModeFlag;
+	private:
+		static bool bEditState;
+		static EditMode mEditMode;
+	};
+}

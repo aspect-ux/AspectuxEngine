@@ -1,0 +1,24 @@
+[submodule "Aspect/vendor/spdlog"]
+	path = Aspect/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Aspect/vendor/glm"]
+	path = Aspect/vendor/glm
+	url = https://github.com/g-truc/glm
+[submodule "Aspect/vendor/Box2D"]
+	path = Aspect/vendor/Box2D
+	url = https://github.com/thecherno/box2d
+[submodule "Aspect/vendor/msdf-atlas-gen"]
+	path = Aspect/vendor/msdf-atlas-gen
+	url = https://github.com/TheCherno/msdf-atlas-gen
+[submodule "Aspect/vendor/ImGuizmo"]
+	path = Aspect/vendor/ImGuizmo
+	url = https://github.com/thecherno/imguizmo
+[submodule "Aspect/vendor/yaml-cpp"]
+	path = Aspect/vendor/yaml-cpp
+	url = https://github.com/TheCherno/yaml-cpp
+[submodule "Aspect/vendor/imgui"]
+	path = Aspect/vendor/imgui
+	url = https://github.com/aspect-ux/imgui.git
+[submodule "Aspect/vendor/DirectXTex"]
+	path = Aspect/vendor/DirectXTex
+	url = https://github.com/microsoft/DirectXTex.git

@@ -1,0 +1,127 @@
+Assets:
+  - Handle: 134218400635275582
+    FilePath: Scripts/Source/test/Flocking/BoidManager.cs
+    Type: ScriptFile
+  - Handle: 1426332984880468656
+    FilePath: Scripts/Source/test/Tests/CSharpTest.cs
+    Type: ScriptFile
+  - Handle: 1445066874498526404
+    FilePath: Scripts/Source/test/PhysicsCubeSpawner.cs
+    Type: ScriptFile
+  - Handle: 3798971361700057910
+    FilePath: Scripts/Source/testMove.cs
+    Type: ScriptFile
+  - Handle: 4996739267097807486
+    FilePath: Scripts/Source/test/Noise.cs
+    Type: ScriptFile
+  - Handle: 5154924093405494575
+    FilePath: Scripts/Source/test/Tests/EntityTest.cs
+    Type: ScriptFile
+  - Handle: 5173198358874842935
+    FilePath: Anis.fbm/bottom_M_BC.jpg
+    Type: Texture
+  - Handle: 5345866399841360417
+    FilePath: Scripts/Source/test/RandomColor.cs
+    Type: ScriptFile
+  - Handle: 5607778017446546712
+    FilePath: Scripts/Source/test/Projectile.cs
+    Type: ScriptFile
+  - Handle: 6015979359974579697
+    FilePath: Models/mary/MC003_Kozakura_Mari.png
+    Type: Texture
+  - Handle: 6607472233655629865
+    FilePath: Anis.fbm/coat_M_BC.jpg
+    Type: Texture
+  - Handle: 6808114022128070189
+    FilePath: Scripts/Source/test/PlayerCube.cs
+    Type: ScriptFile
+  - Handle: 7203804456607867882
+    FilePath: Scripts/Source/test/FPSPlayer.cs
+    Type: ScriptFile
+  - Handle: 7479698008164951143
+    FilePath: Scripts/Source/test/Flocking/BoidSettings.cs
+    Type: ScriptFile
+  - Handle: 7663693972634255066
+    FilePath: Scripts/Source/test/PlayerSphere.cs
+    Type: ScriptFile
+  - Handle: 8056864650838714054
+    FilePath: Scripts/Source/test/AudioController.cs
+    Type: ScriptFile
+  - Handle: 8757281151441482183
+    FilePath: Textures/Checkerboard.png
+    Type: Texture
+  - Handle: 8938620727671033973
+    FilePath: Scripts/Source/test/PlayerController2D.cs
+    Type: ScriptFile
+  - Handle: 8943042713323329400
+    FilePath: Scripts/Source/test/BasicController.cs
+    Type: ScriptFile
+  - Handle: 9138688441445053729
+    FilePath: Models/mary/Marry.obj
+    Type: MeshSource
+  - Handle: 9976640893799923803
+    FilePath: Scripts/Source/test/AudioDemo.cs
+    Type: ScriptFile
+  - Handle: 10440337189917297028
+    FilePath: Scripts/Source/test/ScriptSpawner.cs
+    Type: ScriptFile
+  - Handle: 10659367392973252134
+    FilePath: Textures/ChernoLogo.png
+    Type: Texture
+  - Handle: 11287804849636927487
+    FilePath: Scripts/Source/test/Testing.cs
+    Type: ScriptFile
+  - Handle: 11450429339092826617
+    FilePath: Scripts/Source/Camera.cs
+    Type: ScriptFile
+  - Handle: 11710334552315257811
+    FilePath: Scripts/Source/test/Tests/ExceptionTest.cs
+    Type: ScriptFile
+  - Handle: 11838235334087070252
+    FilePath: Anis.fbm/body_M_BC.jpg
+    Type: Texture
+  - Handle: 13272372139531370182
+    FilePath: Anis.fbm/hair_front_M_BC.jpg
+    Type: Texture
+  - Handle: 14333283411235382570
+    FilePath: Anis.fbm/shirt_M_BC.jpg
+    Type: Texture
+  - Handle: 15112932373245487382
+    FilePath: Anis.fbm/weapon_M_BC.jpg
+    Type: Texture
+  - Handle: 15303785861542459855
+    FilePath: Anis.fbm/shirt_addon_M_BC.jpg
+    Type: Texture
+  - Handle: 15958853569322184834
+    FilePath: Anis.fbm/hair_side_M_BC.jpg
+    Type: Texture
+  - Handle: 16516505452217794153
+    FilePath: Anis.fbm/hair_back_M_BC.jpg
+    Type: Texture
+  - Handle: 16950663387434871545
+    FilePath: Scripts/Source/test/ThirdPerson.cs
+    Type: ScriptFile
+  - Handle: 17374554704877341602
+    FilePath: Anis.fbm/face_M_BC.jpg
+    Type: Texture
+  - Handle: 17482233516098199317
+    FilePath: Scripts/Source/test/MapGenerator.cs
+    Type: ScriptFile
+  - Handle: 17552670809924272336
+    FilePath: Scripts/Source/Player.cs
+    Type: ScriptFile
+  - Handle: 17599976959655647710
+    FilePath: Scripts/Source/test/Flocking/Boid.cs
+    Type: ScriptFile
+  - Handle: 17655555963475379260
+    FilePath: Scripts/Intermediates/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+    Type: ScriptFile
+  - Handle: 17794540495138015582
+    FilePath: Scripts/Source/test/Flocking/BoidHelper.cs
+    Type: ScriptFile
+  - Handle: 18128306758878918679
+    FilePath: Scripts/Source/test/Tests/DOF-Test.cs
+    Type: ScriptFile
+  - Handle: 18313411507923410453
+    FilePath: Anis.fbm/eye_M_BC.jpg
+    Type: Texture

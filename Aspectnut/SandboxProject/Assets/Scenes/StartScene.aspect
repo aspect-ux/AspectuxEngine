@@ -1,0 +1,33 @@
+Scene: Untitled
+Entities:
+  - Entity: 16143781570424148301
+    TagComponent:
+      Tag: Directional Light
+    TransformComponent:
+      Translation: [0, 0, 0]
+      Rotation: [0.961166978, 1.4201858, 1.2031641]
+      Scale: [0.999997258, 0.999999523, 0.999997199]
+    DirectionalLightComponent:
+      dirIntensity: 1.07000005
+  - Entity: 15794395185893427742
+    TagComponent:
+      Tag: Floor
+    TransformComponent:
+      Translation: [0.224013925, -2.83548665, -1.33891916]
+      Rotation: [1.57079637, 0, 0]
+      Scale: [32.6701202, 32.6700516, 0.687105119]
+    RigidBodyComponent:
+      BodyType: 0
+      Mass: 1
+      LinearDrag: 0
+      AngularDrag: 0.05
+    MeshComponent:
+      Path: Resources//Test//Models//Box.obj
+      bUseAlbedoMap: false
+      col: [0, 0.601780295, 0.67181468, 1]
+      bUseNormalMap: true
+      bUseMetallicMap: false
+      metallic: 0.100000001
+      bUseRoughnessMap: false
+      roughness: 0.731999993
+      bUseAoMap: false

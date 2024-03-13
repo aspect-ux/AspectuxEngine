@@ -1,0 +1,46 @@
+Scene: Untitled
+Entities:
+  - Entity: 15355018394736438603
+    TagComponent:
+      Tag: Camera
+    TransformComponent:
+      Translation: [0, 1.70000005, 4]
+      Rotation: [-0.404916406, 0, 0]
+      Scale: [1, 1, 1]
+    CameraComponent:
+      Camera:
+        ProjectionType: 0
+        PerspectiveFOV: 0.52359879
+        PerspectiveNear: 0.00999999978
+        PerspectiveFar: 1000
+        OrthographicSize: 10
+        OrthographicNear: -1
+        OrthographicFar: 1
+      Primary: true
+      FixedAspectRatio: false
+  - Entity: 8244940659429586512
+    TagComponent:
+      Tag: Model
+    TransformComponent:
+      Translation: [0.0746655613, 2.32903767, -1.38633716]
+      Rotation: [1.04719508, 0.785398245, 0.0262773708]
+      Scale: [20, 20, 20]
+    MeshComponent:
+      Path: Resources//Models//mary//Marry.obj
+      bUseAlbedoMap: false
+      col: [1, 1, 1, 1]
+      bUseNormalMap: false
+      bUseMetallicMap: false
+      metallic: 0.100000001
+      bUseRoughnessMap: false
+      roughness: 0.100000001
+      bUseAoMap: false
+  - Entity: 16143781570424148301
+    TagComponent:
+      Tag: Directional Light
+    TransformComponent:
+      Translation: [0, 0, 0]
+      Rotation: [0.961166978, 1.4201858, 1.2031641]
+      Scale: [0.999997258, 0.999999523, 0.999997199]
+    DirectionalLightComponent:
+      dirIntensity: 1.07000005

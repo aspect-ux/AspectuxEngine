@@ -1,0 +1,6 @@
+Project:
+  Name: Sandbox
+  StartScene: "Scenes/Physics3DTest.aspect"
+  AssetDirectory: "Assets"
+  AssetRegistry: Assets/AssetRegistry.asr
+  ScriptModulePath: "Scripts/Binaries"
