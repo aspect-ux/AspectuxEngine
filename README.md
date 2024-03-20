@@ -1,5 +1,7 @@
 # AspectuxEngine
 
+A game engine based on opengl。
+
 ![Language](https://img.shields.io/badge/Language-c++-blue)
 
 ## Introduction
@@ -15,6 +17,10 @@ It is a game engine based on opengl.
 I don't know whether it will support DX11/12 or Vulkan in the future,it depends...
 
 The engine contents are as follows.
+
+## My Notes
+
+[Click here](Documentation/如何从零开发游戏引擎.md)
 
 ## Contents
 
@@ -113,10 +119,6 @@ put a script component to this entity
 ### Physics
 
 Based on bullet
-
-## My Notes
-
-[Click here](Documentation/如何从零开发游戏引擎.md)
 
 ## Credits
 
