@@ -22,7 +22,7 @@ namespace Aspect {
 		// 1. initialize importer
 		AssetImporter::Init();
 
-		// 2. load assets registry from .asr and store data to m_AssetRegistry
+		// 2. load assets registry from .asr file and store data to m_AssetRegistry
 		LoadAssetRegistry();
 
 		// 3. add file sys callbacks
@@ -256,7 +256,7 @@ namespace Aspect {
 		strStream << stream.rdbuf();
 
 		// Start Serializing .asr to register assets,stored in m_AssetRegistry
-		// ¿ªÊ¼½âÎö 
+		// å¼€å§‹è§£æž 
 		YAML::Node data = YAML::Load(strStream.str());
 		auto handles = data["Assets"];
 		if (!handles)

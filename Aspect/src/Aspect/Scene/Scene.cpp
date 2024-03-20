@@ -168,16 +168,16 @@ namespace Aspect {
 	static void CopyComponent(entt::registry& dst, entt::registry& src, const std::unordered_map<UUID, entt::entity>& enttMap)
 	{
 		([&]()
-		{
-			auto view = src.view<Component>();
-			for (auto srcEntity : view)
 			{
-				entt::entity dstEntity = enttMap.at(src.get<IDComponent>(srcEntity).ID);
+				auto view = src.view<Component>();
+				for (auto srcEntity : view)
+				{
+					entt::entity dstEntity = enttMap.at(src.get<IDComponent>(srcEntity).ID);
 
-				auto& srcComponent = src.get<Component>(srcEntity);
-				dst.emplace_or_replace<Component>(dstEntity, srcComponent);
-			}
-		}(), ...);
+					auto& srcComponent = src.get<Component>(srcEntity);
+					dst.emplace_or_replace<Component>(dstEntity, srcComponent);
+				}
+			}(), ...);
 	}
 
 	template<typename... Component>
@@ -185,7 +185,7 @@ namespace Aspect {
 	{
 		CopyComponent<Component...>(dst, src, enttMap);
 	}
-	/*TODO: 
+	/*TODO:
 	template<typename... Component>
 	static void CopyComponentIfExists(Entity dst, Entity src)
 	{
@@ -286,7 +286,7 @@ namespace Aspect {
 		target->m_Name = m_Name;
 
 		// Environment
-		
+
 		target->m_Light = m_Light;
 		target->m_LightMultiplier = m_LightMultiplier;
 
@@ -418,7 +418,7 @@ namespace Aspect {
 
 		// Scripting
 		{
-			
+
 			//ScriptEngine::OnRuntimeStart(this);
 			// Instantiate all script entities
 			//auto view = m_Registry.view<ScriptComponent>();
@@ -597,7 +597,7 @@ namespace Aspect {
 				Renderer2D::EndScene();
 			}
 		}
-		
+
 
 		// 3. Render 3D in Runtime
 		{
@@ -689,7 +689,7 @@ namespace Aspect {
 		{
 			m_LightEnvironment = LightEnvironment();
 			//Directional Lights
-		    {
+			{
 				auto dirLights = m_Registry.group<DirectionalLightComponent>(entt::get<TransformComponent>);
 				uint32_t directionalLightIndex = 0;
 
@@ -734,7 +734,7 @@ namespace Aspect {
 					defaultShader->SetFloat("farPlane", cameraFarPlane);
 					defaultShader->SetInt("cascadeCount", shadowCascadeLevels.size());
 					defaultShader->SetFloat("dirLightIntensity", lightComponent.Intensity);
-					
+
 					for (size_t i = 0; i < shadowCascadeLevels.size(); ++i)
 					{
 						defaultShader->SetFloat("cascadePlaneDistances[" + std::to_string(i) + "]", shadowCascadeLevels[i]);
@@ -743,7 +743,7 @@ namespace Aspect {
 					//=======================================
 				}
 			}
-			
+
 			// Point Lights
 			/* {
 				auto pointLights = m_Registry.group<PointLightComponent>(entt::get<TransformComponent>);
@@ -794,7 +794,7 @@ namespace Aspect {
 					};
 				}
 			}*/
-		
+
 			//==============================From Hegine=============================
 			// Directional light
 			/* {
@@ -840,7 +840,7 @@ namespace Aspect {
 					break; // now we only support one directional light
 				}
 			}*/
-			
+
 			// Point Light 
 			{
 				auto view = m_Registry.view<TransformComponent, PointLightComponent>();
@@ -868,11 +868,11 @@ namespace Aspect {
 					}
 				}
 			}
-		
+
 		}
-	
+
 		uint32_t mainFramebuffer = RenderCommand::GetDrawFrameBuffer();
-		
+
 		// Light Depth pass
 		Renderer3D::lightFBO->Bind();
 
@@ -926,7 +926,7 @@ namespace Aspect {
 			else
 				Renderer3D::DrawModel(transform.GetTransform(), camera.GetPosition(), mesh, (int)e);
 		}
-		
+
 		Renderer3D::EndScene();
 
 
@@ -1058,7 +1058,7 @@ namespace Aspect {
 		{
 			const auto& camera = view.get<CameraComponent>(entity);
 			if (camera.Primary)
-				return Entity{entity, this};
+				return Entity{ entity, this };
 		}
 		return {};
 	}
@@ -1116,7 +1116,7 @@ namespace Aspect {
 		}
 		return {};
 	}
-	
+
 	Entity Scene::DuplicateEntity(Entity entity)
 	{
 		//TODO:
@@ -1304,7 +1304,7 @@ namespace Aspect {
 
 	void Scene::OnPhysics3DStart()
 	{
-		
+
 		mBroadphase = new btDbvtBroadphase();
 		mCollisionConfiguration = new btDefaultCollisionConfiguration();
 		mDispatcher = new btCollisionDispatcher(mCollisionConfiguration);
@@ -1473,7 +1473,7 @@ namespace Aspect {
 
 	void Scene::OnPhysics3DRuntime(Timestep ts)
 	{
-		
+
 		mDynamicsWorld->stepSimulation(ts, 10);
 
 		auto view = this->m_Registry.view<TransformComponent, Rigidbody3DComponent>();
@@ -1655,7 +1655,7 @@ namespace Aspect {
 				return static_cast<uint32_t>(lhsEntity->second) < static_cast<uint32_t>(rhsEntity->second);
 			});
 	}
-	
+
 	//TODO:================================
 	void Scene::ConvertToLocalSpace(Entity entity)
 	{
@@ -1711,8 +1711,8 @@ namespace Aspect {
 	}
 	//======================================
 	*/
-  
-  template<typename T>
+
+	template<typename T>
 	void Scene::OnComponentAdded(Entity entity, T& component)
 	{
 		static_assert(sizeof(T) == 0);

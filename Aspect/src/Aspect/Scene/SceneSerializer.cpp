@@ -1032,14 +1032,14 @@ namespace Aspect {
 					auto& mc = deserializedEntity.AddComponent<MeshComponent>(str);
 
 					// Material
-					mc.m_Mesh->mMaterial[0]->bUseAlbedoMap = meshComponent["bUseAlbedoMap"].as<bool>();
-					mc.m_Mesh->mMaterial[0]->col = meshComponent["col"].as<glm::vec4>();
-					mc.m_Mesh->mMaterial[0]->bUseNormalMap = meshComponent["bUseNormalMap"].as<bool>();
-					mc.m_Mesh->mMaterial[0]->bUseMetallicMap = meshComponent["bUseMetallicMap"].as<bool>();
-					mc.m_Mesh->mMaterial[0]->metallic = meshComponent["metallic"].as<float>();
-					mc.m_Mesh->mMaterial[0]->bUseRoughnessMap = meshComponent["bUseRoughnessMap"].as<bool>();
-					mc.m_Mesh->mMaterial[0]->roughness = meshComponent["roughness"].as<float>();
-					mc.m_Mesh->mMaterial[0]->bUseAoMap = meshComponent["bUseAoMap"].as<bool>();
+					mc.m_Mesh->m_Materials[0]->bUseAlbedoMap = meshComponent["bUseAlbedoMap"].as<bool>();
+					mc.m_Mesh->m_Materials[0]->col = meshComponent["col"].as<glm::vec4>();
+					mc.m_Mesh->m_Materials[0]->bUseNormalMap = meshComponent["bUseNormalMap"].as<bool>();
+					mc.m_Mesh->m_Materials[0]->bUseMetallicMap = meshComponent["bUseMetallicMap"].as<bool>();
+					mc.m_Mesh->m_Materials[0]->metallic = meshComponent["metallic"].as<float>();
+					mc.m_Mesh->m_Materials[0]->bUseRoughnessMap = meshComponent["bUseRoughnessMap"].as<bool>();
+					mc.m_Mesh->m_Materials[0]->roughness = meshComponent["roughness"].as<float>();
+					mc.m_Mesh->m_Materials[0]->bUseAoMap = meshComponent["bUseAoMap"].as<bool>();
 					// End Material
 				}
 

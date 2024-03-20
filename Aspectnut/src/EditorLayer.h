@@ -9,6 +9,8 @@
 #include "Aspect/Editor/EditorConsolePanel.h"
 #include "Aspect/Editor/SceneRendererPanel.h"
 
+#include "Aspect/Renderer/ExtendedRenderer/EditorRenderer.h"
+
 namespace Aspect
 {
 	class EditorLayer : public Layer
@@ -63,7 +65,7 @@ namespace Aspect
 
 		std::vector<std::function<void()>> m_PostSceneUpdateQueue;
 
-		Aspect::OrthographicCameraController m_CameraController; // Ê¹ÓÃcontrollerÀ´¿ØÖÆÏà»ú
+		Aspect::OrthographicCameraController m_CameraController; // ä½¿ç”¨controlleræ¥æ§åˆ¶ç›¸æœº
 
 		// Temp
 		Ref<RenderPass> m_RenderPass;
@@ -88,7 +90,7 @@ namespace Aspect
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 
-		std::unordered_map<char, Aspect::Ref<Aspect::SubTexture2D>> s_TextureMap;// mapÊı¾İ½á¹¹
+		std::unordered_map<char, Aspect::Ref<Aspect::SubTexture2D>> s_TextureMap;// mapæ•°æ®ç»“æ„
 
 		uint32_t m_MapWidth, m_MapHeight;
 
@@ -170,5 +172,7 @@ namespace Aspect
 			std::string FilePathAuto;
 		} m_LoadAutoSavePopupData;
 
+		//TODO: to be removed
+		AspectRef<EditorRenderer> editorRenderer;
 	};
 }

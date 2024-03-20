@@ -61,7 +61,7 @@ namespace Aspect
 		Add("Debug_Depth", Shader::CreateNativeShader(AssetManager::GetFullStringPath("Resources/TestShaders/Shadow/Debug_Depth.glsl")));
 
 		//TODO: to be added 
-		Add("Grid", Shader::Create(AssetManager::GetFullStringPath("Resources/TestShaders/Grid.glsl")));
+		Add("Grid", Shader::CreateNativeShader(AssetManager::GetFullStringPath("Resources/TestShaders/TempGrid.glsl")));
 	}
 
 	Ref<Shader> Library<Shader>::GetDefaultShader()

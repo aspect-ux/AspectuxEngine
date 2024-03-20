@@ -2,7 +2,7 @@
 
 #include "Aspect/Scene/SceneSerializer.h"
 // -------Entry Point---------
-//#include <Aspect/Core/EntryPoint.h> // ¼âÀ¨ºÅ±íÊ¾Ö±½Ó´ÓÏµÍ³Àà¿âÖĞÕÒÎÄ¼ş£¬Ğ§ÂÊ¸ü¸ß£»  " "ËÑË÷·¶Î§¸ü¹ã£¬µ«ÊÇÓÅÏÈ°üº¬±¾µØÄ¿Â¼ÖĞµÄÎÄ¼ş
+//#include <Aspect/Core/EntryPoint.h> // å°–æ‹¬å·è¡¨ç¤ºç›´æ¥ä»ç³»ç»Ÿç±»åº“ä¸­æ‰¾æ–‡ä»¶ï¼Œæ•ˆç‡æ›´é«˜ï¼›  " "æœç´¢èŒƒå›´æ›´å¹¿ï¼Œä½†æ˜¯ä¼˜å…ˆåŒ…å«æœ¬åœ°ç›®å½•ä¸­çš„æ–‡ä»¶
 
 #include "Aspect/Platform/OpenGL/OpenGLShader.h"
 #include "Aspect/Scene/Components.h"
@@ -75,7 +75,7 @@ namespace Aspect
 		void OnCreate() {}
 		void OnDestroy() {}
 		void OnUpdate(Timestep ts) {
-			// »ñÈ¡µ±Ç°¹ÒÔØCameraController½Å±¾µÄÊµÌåµÄTransformComponent×é¼ş
+			// è·å–å½“å‰æŒ‚è½½CameraControllerè„šæœ¬çš„å®ä½“çš„TransformComponentç»„ä»¶
 			auto& transform = GetComponent<TransformComponent>().GetTransform();
 			float speed = 5.0f;
 
@@ -183,6 +183,9 @@ namespace Aspect
 		/*Ref<SceneRendererPanel> sceneRendererPanel = m_PanelManager->AddPanel<SceneRendererPanel>(PanelCategory::View, SCENE_RENDERER_PANEL_ID, "Scene Renderer", true); */
 
 		m_ViewportRenderer = AspectRef<SceneRenderer>::Create(m_CurrentScene);
+
+		//TODO:Editor Renderer
+		//editorRenderer = AspectRef<EditorRenderer>::Create(m_CurrentScene);
 		m_SceneRendererPanel->SetContext(m_ViewportRenderer);
 		//m_SecondViewportRenderer = Ref<SceneRenderer>::Create(m_CurrentScene);
 		//m_FocusedRenderer = m_ViewportRenderer;
@@ -196,16 +199,16 @@ namespace Aspect
 	/*todo: repair my own update
 	void EditorLayer::OnUpdate(Timestep ts)
 	{
-		// ´°¿Úresize£¬ÔÚÃ¿Ò»Ö¡¼ì²â
+		// çª—å£resizeï¼Œåœ¨æ¯ä¸€å¸§æ£€æµ‹
 		if (FrameBufferSpecification spec = m_FrameBuffer->GetSpecification();
 			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f &&
 			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y)) {
-			// µ÷ÕûÖ¡»º³åÇø´óĞ¡
+			// è°ƒæ•´å¸§ç¼“å†²åŒºå¤§å°
 			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-			// µ÷ÕûÉãÏñ»úÍ¶Ó°£ºÖ®Ç°µ÷ÕûEditorLayerµÄÉãÏñ»ú¿í¸ß±È´úÂë
+			// è°ƒæ•´æ‘„åƒæœºæŠ•å½±ï¼šä¹‹å‰è°ƒæ•´EditorLayerçš„æ‘„åƒæœºå®½é«˜æ¯”ä»£ç 
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
 			//
-			// µ÷Õû³¡¾°ÄÚµÄÉãÏñ»ú:´Ë½ÚËù×÷
+			// è°ƒæ•´åœºæ™¯å†…çš„æ‘„åƒæœº:æ­¤èŠ‚æ‰€ä½œ
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 		
@@ -214,11 +217,11 @@ namespace Aspect
 			if(m_ViewportFocused)
 				m_CameraController.OnUpdate(ts);
 
-			// äÖÈ¾ĞÅÏ¢³õÊ¼»¯
+			// æ¸²æŸ“ä¿¡æ¯åˆå§‹åŒ–
 			Renderer2D::ResetStats();
 		}
 		{
-			// 1.°ó¶¨×Ô¶¨ÒåµÄÖ¡»º³å£¨µÈÓÚ½â°óµ½äÖÈ¾µ½Ä¬ÈÏµÄÖ¡»º³åÖĞ£©
+			// 1.ç»‘å®šè‡ªå®šä¹‰çš„å¸§ç¼“å†²ï¼ˆç­‰äºè§£ç»‘åˆ°æ¸²æŸ“åˆ°é»˜è®¤çš„å¸§ç¼“å†²ä¸­ï¼‰
 			m_FrameBuffer->Bind();
 
 			// Renderer Prep
@@ -227,7 +230,7 @@ namespace Aspect
 		}
 		// TODO: Update Scene
 		//m_ActiveScene->OnUpdate(ts);
-		// 2.Quad »æÖÆ²âÊÔ
+		// 2.Quad ç»˜åˆ¶æµ‹è¯•
 		{
 			static float rotation = 0.0f;
 			rotation += ts * 50.0f;
@@ -239,7 +242,7 @@ namespace Aspect
 			
 			//Renderer2D::EndScene();
 		}
-		// 3.½â°óÖ¡»º³å
+		// 3.è§£ç»‘å¸§ç¼“å†²
 		m_FrameBuffer->UnBind();
 	}
 	*/
@@ -476,7 +479,7 @@ namespace Aspect
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-		ImGui::PopStyleColor();  // »Ö¸´Ä¬ÈÏÑÕÉ«
+		ImGui::PopStyleColor();  // æ¢å¤é»˜è®¤é¢œè‰²
 
 		ImGui::End();
 

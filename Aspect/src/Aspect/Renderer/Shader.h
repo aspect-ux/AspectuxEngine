@@ -3,13 +3,13 @@
 #include <string>
 
 //TEMP
-//#include "Aspect/Renderer/ExtendedRenderer/ShaderUniform.h"
+#include "Aspect/Renderer/ExtendedRenderer/ShaderUniform.h"
 
 #include <glm/glm.hpp>
 
 namespace Aspect
 {
-	/*
+
 	enum class ShaderUniformType
 	{
 		None = 0, Bool, Int, UInt, Float, Vec2, Vec3, Vec4, Mat3, Mat4,
@@ -52,16 +52,16 @@ namespace Aspect
 		std::string Name;
 		uint32_t Size = 0;
 		std::unordered_map<std::string, ShaderUniform> Uniforms;
-	};*/
+	};
 
 	class Shader 
 	{
 	public:
 		//Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
-		// Ê¹ÓÃvirtualµÄ»°×ÓÀà»áµ÷ÓÃ×Ô¼ºµÄÎö¹¹£¬¶ø²»ÊÇ»ùÀàµÄÎö¹¹£»²»Ê¹ÓÃ¿ÉÄÜÔì³ÉÄÚ´æĞ¹Â©
-		virtual ~Shader() = default; // defaultµÄ×÷ÓÃÔÚÓÚÏÔÊ¾ÉùÃ÷Ä¬ÈÏÎö¹¹º¯Êı£¬ÕâÑù¾ÍËã²»´ø²ÎÊıÒ²ÄÜ´´½¨¶ÔÏó¡£ ÈçShader s;
+		// ä½¿ç”¨virtualçš„è¯å­ç±»ä¼šè°ƒç”¨è‡ªå·±çš„ææ„ï¼Œè€Œä¸æ˜¯åŸºç±»çš„ææ„ï¼›ä¸ä½¿ç”¨å¯èƒ½é€ æˆå†…å­˜æ³„æ¼
+		virtual ~Shader() = default; // defaultçš„ä½œç”¨åœ¨äºæ˜¾ç¤ºå£°æ˜é»˜è®¤ææ„å‡½æ•°ï¼Œè¿™æ ·å°±ç®—ä¸å¸¦å‚æ•°ä¹Ÿèƒ½åˆ›å»ºå¯¹è±¡ã€‚ å¦‚Shader s;
 
-		// ÕâÀïÈÃShader³ÆÎª³éÏóÀà£¬²»ÄÜ¹»´´½¨Shader¶ÔÏó£¬Ê¹ÓÃCreateº¯ÊıÀ´¸ù¾İÆ½Ì¨²»Í¬´´½¨
+		// è¿™é‡Œè®©Shaderç§°ä¸ºæŠ½è±¡ç±»ï¼Œä¸èƒ½å¤Ÿåˆ›å»ºShaderå¯¹è±¡ï¼Œä½¿ç”¨Createå‡½æ•°æ¥æ ¹æ®å¹³å°ä¸åŒåˆ›å»º
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
@@ -88,14 +88,13 @@ namespace Aspect
 		virtual void SetFloat4(const std::string& name, const glm::vec4& value) = 0;
 		virtual void SetMat4(const std::string& name, const glm::mat4& value) = 0;
 
-		// TODO: to be removed
-		/*virtual const std::unordered_map<std::string, ShaderBuffer>& GetShaderBuffers() {
+		virtual const std::unordered_map<std::string, ShaderBuffer>& GetShaderBuffers() {
 			return std::unordered_map<std::string, ShaderBuffer>(0);
 		};
 		virtual const std::unordered_map<std::string, ShaderResourceDeclaration>& GetResources() const
 		{
 			return std::unordered_map<std::string, ShaderResourceDeclaration>(0);
-		}*/
+		}
 
 		virtual const std::string& GetName() const = 0;
 

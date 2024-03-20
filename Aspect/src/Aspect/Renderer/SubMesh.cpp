@@ -31,7 +31,7 @@ namespace Aspect
 	}
 
 	SubMesh::SubMesh(const std::vector<StaticVertex>& vertices, const std::vector<uint32_t> indices, const std::vector<MaterialTexture>& textures, uint32_t materialIndex)
-		: mStaticVertices(vertices), mIndices(indices), mTextures(textures), mMaterialIndex(materialIndex)
+		: mStaticVertices(vertices), mIndices(indices), mTextures(textures), m_MaterialIndex(materialIndex)
 	{
 		mVertexArray = VertexArray::Create();
 
@@ -77,7 +77,7 @@ namespace Aspect
 	}
 
 	SubMesh::SubMesh(const std::vector<SkinnedVertex>& vertices, const std::vector<uint32_t> indices, const std::vector<MaterialTexture>& textures, uint32_t materialIndex)
-		: mSkinnedVertices(vertices), mIndices(indices), mTextures(textures), mMaterialIndex(materialIndex)
+		: mSkinnedVertices(vertices), mIndices(indices), mTextures(textures), m_MaterialIndex(materialIndex)
 	{
 		mVertexArray = VertexArray::Create();
 
@@ -131,28 +131,28 @@ namespace Aspect
 			Library<Texture2D>::GetInstance().Get("BlackTexture")->Bind(2);
 		}
 
-		if (model->mMaterial[mMaterialIndex]->bUseAlbedoMap)
-			model->mMaterial[mMaterialIndex]->mAlbedoMap->Bind(3);
+		if (model->m_Materials[m_MaterialIndex]->bUseAlbedoMap)
+			model->m_Materials[m_MaterialIndex]->mAlbedoMap->Bind(3);
 		else
-			model->mMaterial[mMaterialIndex]->albedoRGBA->Bind(3);
+			model->m_Materials[m_MaterialIndex]->albedoRGBA->Bind(3);
 
-		if (model->mMaterial[mMaterialIndex]->bUseNormalMap)
-			model->mMaterial[mMaterialIndex]->mNormalMap->Bind(4);
+		if (model->m_Materials[m_MaterialIndex]->bUseNormalMap)
+			model->m_Materials[m_MaterialIndex]->mNormalMap->Bind(4);
 		else
 			Library<Texture2D>::GetInstance().GetWhiteTexture()->Bind(4);
 
-		if (model->mMaterial[mMaterialIndex]->bUseMetallicMap)
-			model->mMaterial[mMaterialIndex]->mMetallicMap->Bind(5);
+		if (model->m_Materials[m_MaterialIndex]->bUseMetallicMap)
+			model->m_Materials[m_MaterialIndex]->mMetallicMap->Bind(5);
 		else
-			model->mMaterial[mMaterialIndex]->metallicRGBA->Bind(5);
+			model->m_Materials[m_MaterialIndex]->metallicRGBA->Bind(5);
 
-		if (model->mMaterial[mMaterialIndex]->bUseRoughnessMap)
-			model->mMaterial[mMaterialIndex]->mRoughnessMap->Bind(6);
+		if (model->m_Materials[m_MaterialIndex]->bUseRoughnessMap)
+			model->m_Materials[m_MaterialIndex]->mRoughnessMap->Bind(6);
 		else
-			model->mMaterial[mMaterialIndex]->roughnessRGBA->Bind(6);
+			model->m_Materials[m_MaterialIndex]->roughnessRGBA->Bind(6);
 
-		if (model->mMaterial[mMaterialIndex]->bUseAoMap)
-			model->mMaterial[mMaterialIndex]->mAoMap->Bind(7);
+		if (model->m_Materials[m_MaterialIndex]->bUseAoMap)
+			model->m_Materials[m_MaterialIndex]->mAoMap->Bind(7);
 		else
 			Library<Texture2D>::GetInstance().GetWhiteTexture()->Bind(7);
 

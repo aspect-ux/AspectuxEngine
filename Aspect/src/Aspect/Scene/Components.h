@@ -17,6 +17,7 @@
 #include "Aspect/Physics/3D/PhysicsTypes.h"
 #include "Aspect/Math/Math.h"
 #include "Aspect/Script/GCManager.h"
+#include <Aspect/Renderer/MaterialAsset.h>
 
 namespace Aspect {
 
@@ -121,13 +122,15 @@ namespace Aspect {
 	struct MeshComponent
 	{
 		std::string Path = "None";
-		Ref<Mesh> m_Mesh;
+		AspectRef<Mesh> m_Mesh;
+
+		AspectRef<Aspect::MaterialTable> MaterialTable = AspectRef<Aspect::MaterialTable>::Create();
 
 		MeshComponent() = default;
 		//MeshComponent() { m_Mesh = CreateRef<Mesh>(); };
 		MeshComponent(const MeshComponent&) = default;
 		MeshComponent(const std::string& path)
-			: Path(path), m_Mesh(CreateRef<Mesh>(path))
+			: Path(path), m_Mesh(AspectRef<Mesh>::Create(path))
 		{
 		}
 		//MeshComponent(const std::filesystem::path& path)

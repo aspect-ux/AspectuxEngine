@@ -63,9 +63,12 @@ namespace Aspect
 	{
 		shader->Bind();
 		
-		// 智能指针向下转换（基类转派生）用dynamic_pointer_cast
+		// 鏅鸿兘鎸囬拡鍚戜笅杞崲锛堝熀绫昏浆娲剧敓锛夌敤dynamic_pointer_cast
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjectionMatrix", m_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
+
+		//TODO: to be wrapped
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

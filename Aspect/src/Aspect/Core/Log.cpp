@@ -9,7 +9,7 @@
 #define AS_HAS_CONSOLE !AS_DIST
 
 namespace Aspect {
-
+	// 核心层，客户端层，编辑器层
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 	std::shared_ptr<spdlog::logger> Log::s_EditorConsoleLogger;

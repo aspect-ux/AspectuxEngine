@@ -19,24 +19,24 @@
 
 namespace Aspect
 {
-	class Mesh
+	class Mesh : public Asset
 	{
 	public:
 		Mesh() = default;
 		Mesh(const Mesh&) = default;
 		Mesh(const std::string& path)
 		{
-			mMaterial.push_back(CreateRef<Material>(Library<Shader>::GetInstance().GetDefaultShader()));
+			m_Materials.push_back(Material::Create(Library<Shader>::GetInstance().GetDefaultShader()));
 			LoadModel(path);
 		}
 
 		Mesh(const std::string& path, Ref<Shader> shader)
 		{
-			mMaterial.push_back(CreateRef<Material>(shader));
+			m_Materials.push_back(Material::Create(shader));
 			LoadModel(path);
 		}
 
-		void SetShader(Ref<Shader> shader) { mMaterial[0]->SetShader(shader); };
+		void SetShader(Ref<Shader> shader) { m_Materials[0]->SetShader(shader); };
 		void Draw(const glm::mat4& transform, const glm::vec3& cameraPos, int entityID);
 		void Draw(const glm::mat4& transform, const glm::vec3& cameraPos, Ref<Shader> shader, int entityID);
 
@@ -62,7 +62,7 @@ namespace Aspect
 
 		float mAnimPlaySpeed = 1.0f;
 
-		std::vector<Ref<Material>> mMaterial;
+		std::vector<AspectRef<Material>> m_Materials;
 		std::vector<SubMesh> mSubMeshes;
 	private:
 		std::string mDirectory;

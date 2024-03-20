@@ -278,7 +278,7 @@ namespace Aspect {
 		s_Data.CircleIndexCount = 0;
 		s_Data.CircleVertexBufferPtr = s_Data.CircleVertexBufferBase;
 
-		AS_CORE_WARN(s_Data.LineVertexBufferPtr!=nullptr);
+		//AS_CORE_WARN(s_Data.LineVertexBufferPtr!=nullptr);
 		s_Data.LineVertexCount = 0;
 		s_Data.LineVertexBufferPtr = s_Data.LineVertexBufferBase;	
 		

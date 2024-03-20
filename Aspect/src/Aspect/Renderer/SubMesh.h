@@ -50,7 +50,7 @@ namespace Aspect
 	private:
 		void SetupMesh(int entityID);
 	public:
-		uint32_t mMaterialIndex;
+		uint32_t m_MaterialIndex;
 
 		std::vector<StaticVertex> mStaticVertices;
 		std::vector<SkinnedVertex> mSkinnedVertices;

@@ -23,7 +23,7 @@ namespace Aspect
 	void Mesh::Draw(const glm::mat4& transform, const glm::vec3& cameraPos, int entityID)
 	{
 		for (unsigned int i = 0; i < mSubMeshes.size(); ++i)
-			mSubMeshes[i].Draw(transform, cameraPos, mMaterial[0]->GetShader(), entityID, this);
+			mSubMeshes[i].Draw(transform, cameraPos, m_Materials[0]->GetShader(), entityID, this);
 	}
 
 	void Mesh::Draw(const glm::mat4& transform, const glm::vec3& cameraPos, Ref<Shader> shader, int entityID)
@@ -40,7 +40,7 @@ namespace Aspect
 
 	void Mesh::LoadModel(const std::string& path)
 	{
-		mMaterial.resize(200);
+		m_Materials.resize(200);
 
 		Assimp::Importer importer;
 		std::string standardPath = std::regex_replace(path, std::regex("\\\\"), "/");
@@ -66,7 +66,7 @@ namespace Aspect
 		else
 			ProcessNode(scene->mRootNode, scene, subMeshIndex);
 
-		mMaterial.resize(subMeshIndex);
+		m_Materials.resize(subMeshIndex);
 	}
 
 	void Mesh::ProcessNode(aiNode* node, const aiScene* scene, uint32_t& subMeshIndex)
@@ -216,7 +216,7 @@ namespace Aspect
 		// specular: texture_specularN
 		// normal: texture_normalN
 
-		mMaterial[subMeshIndex] = CreateRef<Material>();
+		m_Materials[subMeshIndex] = Material::Create(Library<Shader>::GetInstance().Get("BasePBR"),""); //Material::Create(Library<Shader>::GetInstance().Get("BasePBR"), "temp");
 
 		const auto& loadTexture = [&](aiTextureType type) {
 			auto maps = loadMaterialTextures(material, type, subMeshIndex);
@@ -241,13 +241,13 @@ namespace Aspect
 
 			// check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
 			bool skip = false;
-			//if (!mMaterial[subMeshIndex]->mTextures.empty())
+			//if (!m_Materials[subMeshIndex]->mTextures.empty())
 			//{
-			for (unsigned int j = 0; j < mMaterial[subMeshIndex]->mTextures.size(); j++)
+			for (unsigned int j = 0; j < m_Materials[subMeshIndex]->mTextures.size(); j++)
 			{
-				if (std::strcmp(mMaterial[subMeshIndex]->mTextures[j].path.data(), str.C_Str()) == 0)
+				if (std::strcmp(m_Materials[subMeshIndex]->mTextures[j].path.data(), str.C_Str()) == 0)
 				{
-					textures.push_back(mMaterial[subMeshIndex]->mTextures[j]);
+					textures.push_back(m_Materials[subMeshIndex]->mTextures[j]);
 					skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
 					break;
 				}
@@ -274,8 +274,8 @@ namespace Aspect
 				case aiTextureType_DIFFUSE:
 				case aiTextureType_BASE_COLOR:
 					texture.type = ConcreteTextureType::Albedo;
-					mMaterial[subMeshIndex]->mAlbedoMap = texture.texture2d;
-					mMaterial[subMeshIndex]->bUseAlbedoMap = true;
+					m_Materials[subMeshIndex]->mAlbedoMap = texture.texture2d;
+					m_Materials[subMeshIndex]->bUseAlbedoMap = true;
 					break;
 				case aiTextureType_HEIGHT:
 					texture.type = ConcreteTextureType::Height;
@@ -283,25 +283,25 @@ namespace Aspect
 				case aiTextureType_AMBIENT:
 				case aiTextureType_AMBIENT_OCCLUSION:
 					texture.type = ConcreteTextureType::AmbientOcclusion;
-					mMaterial[subMeshIndex]->mAoMap = texture.texture2d;
-					mMaterial[subMeshIndex]->bUseAoMap = true;
+					m_Materials[subMeshIndex]->mAoMap = texture.texture2d;
+					m_Materials[subMeshIndex]->bUseAoMap = true;
 					break;
 				case aiTextureType_NORMALS:
 				case aiTextureType_NORMAL_CAMERA:
 					texture.type = ConcreteTextureType::Normal;
-					mMaterial[subMeshIndex]->mNormalMap = texture.texture2d;
-					mMaterial[subMeshIndex]->bUseNormalMap = true;
+					m_Materials[subMeshIndex]->mNormalMap = texture.texture2d;
+					m_Materials[subMeshIndex]->bUseNormalMap = true;
 					break;
 				case aiTextureType_SPECULAR:
 				case aiTextureType_METALNESS:
 					texture.type = ConcreteTextureType::Metalness;
-					mMaterial[subMeshIndex]->mMetallicMap = texture.texture2d;
-					mMaterial[subMeshIndex]->bUseMetallicMap = true;
+					m_Materials[subMeshIndex]->mMetallicMap = texture.texture2d;
+					m_Materials[subMeshIndex]->bUseMetallicMap = true;
 					break;
 				case aiTextureType_DIFFUSE_ROUGHNESS:
 					texture.type = ConcreteTextureType::Roughness;
-					mMaterial[subMeshIndex]->mRoughnessMap = texture.texture2d;
-					mMaterial[subMeshIndex]->bUseRoughnessMap = true;
+					m_Materials[subMeshIndex]->mRoughnessMap = texture.texture2d;
+					m_Materials[subMeshIndex]->bUseRoughnessMap = true;
 					break;
 				case aiTextureType_EMISSIVE:
 					texture.type = ConcreteTextureType::Emission;
@@ -309,7 +309,7 @@ namespace Aspect
 				}
 				texture.path = str.C_Str();
 				textures.push_back(texture);
-				mMaterial[subMeshIndex]->mTextures.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+				m_Materials[subMeshIndex]->mTextures.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
 			}
 		}
 

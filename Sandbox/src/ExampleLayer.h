@@ -44,7 +44,7 @@ class ExampleLayer : public Aspect::Layer
 public:
 	ExampleLayer() : Layer("Example"), m_CameraController(1280.0f / 720.0f, true), m_SquarePosition(0.0f)
 	{
-		// ===========´´½¨°ó¶¨vertexArray,vertexBuffer=============
+		// ===========åˆ›å»ºç»‘å®švertexArray,vertexBuffer=============
 		//glGenVertexArrays(1, &m_VertexArray);
 		//glBindVertexArray(m_VertexArray);
 
@@ -68,10 +68,10 @@ public:
 		buffer.Bind();*/
 		vertexBuffer->SetLayout(layout);
 
-		// ÉèÖÃ¶¥µãÖ¸ÕëÊôĞÔ
+		// è®¾ç½®é¡¶ç‚¹æŒ‡é’ˆå±æ€§
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-		//glGenBuffers(1, &m_IndexBuffer); // ¿ØÖÆ¶¥µã»æÖÆindexË³Ğò
+		//glGenBuffers(1, &m_IndexBuffer); // æ§åˆ¶é¡¶ç‚¹ç»˜åˆ¶indexé¡ºåº
 		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 		Aspect::Ref<Aspect::IndexBuffer> indexBuffer;
 		uint32_t indices[3] = { 0,1,2 };
@@ -82,7 +82,7 @@ public:
 		//======================================
 		m_SquareVA = (Aspect::VertexArray::Create());
 
-		// Ò²¿ÉÒÔ¸ù¾İÍ¼ÏñµÄrgbÖµÀ´ÅĞ¶ÏÍ¼ĞÎ×ø±êÊÇ·ñÕıÈ·¶ÔÓ¦
+		// ä¹Ÿå¯ä»¥æ ¹æ®å›¾åƒçš„rgbå€¼æ¥åˆ¤æ–­å›¾å½¢åæ ‡æ˜¯å¦æ­£ç¡®å¯¹åº”
 		float squareVertices[5 * 4] = {
 			-0.5f,-0.5f,0.0f,  0.0f,0.0f,
 			 0.5f,-0.5f,0.0f,  1.0f,0.0f,
@@ -92,7 +92,7 @@ public:
 		Aspect::Ref<Aspect::VertexBuffer> squareVB;
 		squareVB = (Aspect::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
-		// layout ±¾ÉíÊÇ¶ÔÊı×é²¼¾ÖµÄÉèÖÃ£¬ÕâÀïÖ±½Ó³éÏó³öÀ´£¬·½±ãÖ±½Ó´ÓÊı×éÀïÓ³ÉäÏàÓ¦µÄÊôĞÔ
+		// layout æœ¬èº«æ˜¯å¯¹æ•°ç»„å¸ƒå±€çš„è®¾ç½®ï¼Œè¿™é‡Œç›´æ¥æŠ½è±¡å‡ºæ¥ï¼Œæ–¹ä¾¿ç›´æ¥ä»æ•°ç»„é‡Œæ˜ å°„ç›¸åº”çš„å±æ€§
 		squareVB->SetLayout({
 			{Aspect::ShaderDataType::Float3,"a_Position"},
 			{Aspect::ShaderDataType::Float2,"a_TexCoord"}
@@ -104,7 +104,7 @@ public:
 		squareIB = (Aspect::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		// R´ú±íÔ­Ê¼×Ö·û´®£¬À¨ºÅÄÚ²»»á±»±àÒëÆ÷ºöÂÔ£¬ÇÒ²»»á±»×ªÒå
+		// Rä»£è¡¨åŸå§‹å­—ç¬¦ä¸²ï¼Œæ‹¬å·å†…ä¸ä¼šè¢«ç¼–è¯‘å™¨å¿½ç•¥ï¼Œä¸”ä¸ä¼šè¢«è½¬ä¹‰
 		std::string vertexSrc = R"(
 			#version 330 core
 
@@ -204,11 +204,11 @@ public:
 		)";
 		//m_Shader = std::make_unique<Shader>();
 
-		/*@point shared_ptrµÄresetº¯Êı
-		* 1. resetÓÃÀ´ÖØÖÃµ÷ÓÃÖ¸ÕëµÄÖ¸Ïò
-		*    ÕâÀïÒòÎªµ×²ã²ÉÓÃmake_sharedµÄ·½Ê½³õÊ¼»¯£¬ËùÒÔ²»ÄÜÓÃreset;Ö±½ÓµÈÓÚºÅ¸³Öµ¾ÍĞĞ
-		* 2. ²ÉÈ¡Á½ÖÖ´´½¨shader(¶ÁÈ¡shader)µÄ·½Ê½
-		*    Ê¹ÓÃÁËShaderLibrary¿â£¬¿ÉÒÔ¸ù¾İÂ·¾¶¶ÁÈ¡glslÎÄ¼ş´´½¨shader£¬Ò²¿ÉÒÔ´«²Îname,vert,frag´´½¨shader
+		/*@point shared_ptrçš„resetå‡½æ•°
+		* 1. resetç”¨æ¥é‡ç½®è°ƒç”¨æŒ‡é’ˆçš„æŒ‡å‘
+		*    è¿™é‡Œå› ä¸ºåº•å±‚é‡‡ç”¨make_sharedçš„æ–¹å¼åˆå§‹åŒ–ï¼Œæ‰€ä»¥ä¸èƒ½ç”¨reset;ç›´æ¥ç­‰äºå·èµ‹å€¼å°±è¡Œ
+		* 2. é‡‡å–ä¸¤ç§åˆ›å»ºshader(è¯»å–shader)çš„æ–¹å¼
+		*    ä½¿ç”¨äº†ShaderLibraryåº“ï¼Œå¯ä»¥æ ¹æ®è·¯å¾„è¯»å–glslæ–‡ä»¶åˆ›å»ºshaderï¼Œä¹Ÿå¯ä»¥ä¼ å‚name,vert,fragåˆ›å»ºshader
 		*/
 		m_Shader = Aspect::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
@@ -228,16 +228,16 @@ public:
 	{
 		// AS_TRACE("Delta Time = {0}s : ({1}ms)", ts.GetSeconds(),ts.GetMilliseconds());
 
-		// 1. ×¢Òâ£¬ÊäÈë¼ì²â·ÅÔÚupdateÀï£¬ÄÜ¹»±£Ö¤Ã¿Ö¡¶¼¼ì²â£¬ÒÆ¶¯Á÷³©£»Èç¹ûÔÚÊÂ¼şÀïµ÷ÓÃ£¬³¤°´»á±»¼ì²âÎªÒ»´Î£¬Ò²¼´Ö»ÒÆ¶¯Ò»´Î¡£
-		//    ´ÓÎïÌå¿ØÖÆÒÆ¶¯µÄ½Ç¶ÈÀ´¿´£¬update¸üÁ÷³©£»ÁíÒ»·½Ãæ£¬ÊÂ¼şÖ»»áµ÷ÓÃÒ»´Î£¬¸ü¿É¿Ø¡£
-		// 2. ÒıÈëTimestep,ÀàËÆÓÚUnityÖĞTime.deltaTime ÒòÎªµçÄÔÊ±¶ømÖ¡£¬Ê±¶ønÖ¡£¬ÄÃÒÆ¶¯¾ÙÀı£¬updateÃ¿Ö¡µ÷ÓÃÒ»´Î£¬µ«ÊÇÓÉÓÚÖ¡Êı²»ÎÈ¶¨£¬
-		//    µ¼ÖÂÃ¿Ò»Ö¡Ê±¼ä²»Ò»Ñù£¬µ«ÊÇÃ¿Ò»Ö¡ÒÆ¶¯¾àÀëÒ»Ñù£¬Ò²¼´ÒÆ¶¯ÏàÍ¬¾àÀëÈ´»¨ÁË²»Í¬Ê±¼ä£¬ÒÆ¶¯ËÙ¶È²»·ûºÏÒªÇó£¡
-		//    TimestepµÄºÃ´¦ÊÇÊµÊ±¼ÆËãµ±Ç°Ö¡µÄdeltaTime,ÕâÑùÖ±½Ó×÷ÎªÈ¨ÖØ³ËÒÔËÙ¶È£¬¾ÍÄÜ±£Ö¤¾ÍËãÖ¡Êı²»ÎÈ¶¨£¬Ò²ÄÜÓĞÎÈ¶¨µÄÒÆ¶¯½á¹û¡£
-		// 3. OpenGLÊÇÓÒÊÖ×ø±êÏµ
+		// 1. æ³¨æ„ï¼Œè¾“å…¥æ£€æµ‹æ”¾åœ¨updateé‡Œï¼Œèƒ½å¤Ÿä¿è¯æ¯å¸§éƒ½æ£€æµ‹ï¼Œç§»åŠ¨æµç•…ï¼›å¦‚æœåœ¨äº‹ä»¶é‡Œè°ƒç”¨ï¼Œé•¿æŒ‰ä¼šè¢«æ£€æµ‹ä¸ºä¸€æ¬¡ï¼Œä¹Ÿå³åªç§»åŠ¨ä¸€æ¬¡ã€‚
+		//    ä»ç‰©ä½“æ§åˆ¶ç§»åŠ¨çš„è§’åº¦æ¥çœ‹ï¼Œupdateæ›´æµç•…ï¼›å¦ä¸€æ–¹é¢ï¼Œäº‹ä»¶åªä¼šè°ƒç”¨ä¸€æ¬¡ï¼Œæ›´å¯æ§ã€‚
+		// 2. å¼•å…¥Timestep,ç±»ä¼¼äºUnityä¸­Time.deltaTime å› ä¸ºç”µè„‘æ—¶è€Œmå¸§ï¼Œæ—¶è€Œnå¸§ï¼Œæ‹¿ç§»åŠ¨ä¸¾ä¾‹ï¼Œupdateæ¯å¸§è°ƒç”¨ä¸€æ¬¡ï¼Œä½†æ˜¯ç”±äºå¸§æ•°ä¸ç¨³å®šï¼Œ
+		//    å¯¼è‡´æ¯ä¸€å¸§æ—¶é—´ä¸ä¸€æ ·ï¼Œä½†æ˜¯æ¯ä¸€å¸§ç§»åŠ¨è·ç¦»ä¸€æ ·ï¼Œä¹Ÿå³ç§»åŠ¨ç›¸åŒè·ç¦»å´èŠ±äº†ä¸åŒæ—¶é—´ï¼Œç§»åŠ¨é€Ÿåº¦ä¸ç¬¦åˆè¦æ±‚ï¼
+		//    Timestepçš„å¥½å¤„æ˜¯å®æ—¶è®¡ç®—å½“å‰å¸§çš„deltaTime,è¿™æ ·ç›´æ¥ä½œä¸ºæƒé‡ä¹˜ä»¥é€Ÿåº¦ï¼Œå°±èƒ½ä¿è¯å°±ç®—å¸§æ•°ä¸ç¨³å®šï¼Œä¹Ÿèƒ½æœ‰ç¨³å®šçš„ç§»åŠ¨ç»“æœã€‚
+		// 3. OpenGLæ˜¯å³æ‰‹åæ ‡ç³»
 
 		/* Move Square
 		if (Aspect::Input::IsKeyPressed(Aspect::Key::L))
-			m_SquarePosition.x += m_SquareSpeed * ts;  // ³ËÒÔtimestep,
+			m_SquarePosition.x += m_SquareSpeed * ts;  // ä¹˜ä»¥timestep,
 
 		if (Aspect::Input::IsKeyPressed(Aspect::Key::J))
 			m_SquarePosition.x -= m_SquareSpeed * ts;
@@ -255,7 +255,7 @@ public:
 		Aspect::RenderCommand::SetClearColor(glm::vec4({ 0.1f, 0.1f, 0.1f, 1.0f }));
 		Aspect::RenderCommand::Clear();
 
-		// Ïà»ú»á×ÔĞĞupdate ÉèÖÃÎ»ÖÃºÍĞı×ª
+		// ç›¸æœºä¼šè‡ªè¡Œupdate è®¾ç½®ä½ç½®å’Œæ—‹è½¬
 		//m_Camera.SetPosition(m_CameraPosition);
 		//m_Camera.SetRotation(m_CameraRotation);
 
@@ -281,7 +281,7 @@ public:
 			}
 		}
 
-		// ´ÓShaderLibraryÖĞGetÖ¸¶¨shader
+		// ä»ShaderLibraryä¸­GetæŒ‡å®šshader
 		auto textureShader = m_ShaderLibrary.Get("Texture");
 
 		m_Texture->Bind();
@@ -325,7 +325,7 @@ private:
 	Aspect::Ref<Aspect::VertexArray> m_SquareVA;
 	Aspect::Ref<Aspect::Texture2D> m_Texture, m_AspectLogTexture;
 
-	Aspect::OrthographicCameraController m_CameraController; // Ê¹ÓÃcontrollerÀ´¿ØÖÆÏà»ú
+	Aspect::OrthographicCameraController m_CameraController; // ä½¿ç”¨controlleræ¥æ§åˆ¶ç›¸æœº
 
 	glm::vec3 m_SquarePosition;
 	float m_SquareSpeed = 1.0f;

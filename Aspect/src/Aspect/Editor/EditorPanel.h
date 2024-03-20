@@ -15,7 +15,7 @@ namespace Aspect {
 		virtual void OnImGuiRender(bool& isOpen) = 0;
 		virtual void OnEvent(Event& e) {}
 		virtual void OnProjectChanged(const Ref<Project>& project) {}
-		virtual void SetSceneContext(const AspectRef<Scene>& context) {}
+		virtual void SetSceneContext(const AspectRef<Scene>& context) {};
 	};
 
 }

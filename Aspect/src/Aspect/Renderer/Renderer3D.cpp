@@ -47,6 +47,8 @@ namespace Aspect
 		fbSpec.Width = 4096;
 		fbSpec.Height = 4096;
 		lightFBO = FrameBuffer::Create(fbSpec);
+
+
 #if 0
 		//s_3DData = anew Renderer3DData();
 

@@ -730,7 +730,7 @@ namespace Aspect {
 					{
 						auto path = (const wchar_t*)payload->Data;
 						component.Path = (std::filesystem::path("Assets") / path).string();
-						component.m_Mesh = CreateRef<Mesh>(component.Path);
+						component.m_Mesh = AspectRef<Mesh>::Create(component.Path);
 					}
 					ImGui::EndDragDropTarget();
 				}
@@ -746,12 +746,12 @@ namespace Aspect {
 					else
 					{
 						// TODO: Import Mesh
-						//HE_CORE_ASSERT(false, "Aspect Now Only support the model from Assets!");
+						//AS_CORE_ASSERT(false, "Aspect Now Only support the model from Assets!");
 						//filepath = "";
 					}
 					if (!filepath.empty())
 					{
-						component.m_Mesh = CreateRef<Mesh>(filepath);
+						component.m_Mesh = AspectRef<Mesh>::Create(filepath);
 						component.Path = filepath;
 					}
 				}
@@ -761,7 +761,7 @@ namespace Aspect {
 				{
 					uint32_t matIndex = 0;
 
-					const auto& materialNode = [&matIndex = matIndex](const char* name, Ref<Material>& material, Ref<Texture2D>& tex, void(*func)(Ref<Material>& mat)) {
+					const auto& materialNode = [&matIndex = matIndex](const char* name, AspectRef<Material>& material, Ref<Texture2D>& tex, void(*func)(AspectRef<Material>& mat)) {
 						std::string label = std::string(name) + std::to_string(matIndex);
 						ImGui::PushID(label.c_str());
 
@@ -789,14 +789,14 @@ namespace Aspect {
 						ImGui::PopID();
 						};
 
-					for (auto& material : component.m_Mesh->mMaterial)
+					for (auto& material : component.m_Mesh->m_Materials)
 					{
 						std::string label = std::string("material") + std::to_string(matIndex);
 						ImGui::PushID(label.c_str());
 
 						if (ImGui::TreeNode((void*)label.c_str(), std::to_string(matIndex).c_str()))
 						{
-							materialNode("Albedo", material, material->mAlbedoMap, [](Ref<Material>& mat) {
+							materialNode("Albedo", material, material->mAlbedoMap, [](AspectRef<Material>& mat) {
 								ImGui::SameLine();
 								ImGui::Checkbox("Use", &mat->bUseAlbedoMap);
 
@@ -814,12 +814,12 @@ namespace Aspect {
 								}
 								});
 
-							materialNode("Normal", material, material->mNormalMap, [](Ref<Material>& mat) {
+							materialNode("Normal", material, material->mNormalMap, [](AspectRef<Material>& mat) {
 								ImGui::SameLine();
 								ImGui::Checkbox("Use", &mat->bUseNormalMap);
 								});
 
-							materialNode("Metallic", material, material->mMetallicMap, [](Ref<Material>& mat) {
+							materialNode("Metallic", material, material->mMetallicMap, [](AspectRef<Material>& mat) {
 								ImGui::SameLine();
 
 								if (ImGui::BeginTable("Metallic", 1))
@@ -849,7 +849,7 @@ namespace Aspect {
 								}
 								});
 
-							materialNode("Roughness", material, material->mRoughnessMap, [](Ref<Material>& mat) {
+							materialNode("Roughness", material, material->mRoughnessMap, [](AspectRef<Material>& mat) {
 								ImGui::SameLine();
 
 								if (ImGui::BeginTable("Roughness", 1))
@@ -879,7 +879,7 @@ namespace Aspect {
 								}
 								});
 
-							materialNode("Ambient Occlusion", material, material->mAoMap, [](Ref<Material>& mat) {
+							materialNode("Ambient Occlusion", material, material->mAoMap, [](AspectRef<Material>& mat) {
 								ImGui::SameLine();
 								ImGui::Checkbox("Use", &mat->bUseAoMap);
 								});
