@@ -14,7 +14,7 @@ This is my first game engine and the last one as well of my undergraduate life.
 
 It is a game engine based on opengl.
 
-I don't know whether it will support DX11/12 or Vulkan in the future,it depends...
+I don't know whether will it support DX11/12 or Vulkan in the future or not,it depends...
 
 The engine contents are as follows.
 
@@ -33,6 +33,10 @@ console
 ![image-20240320223455658](README/3.png)
 
 ### Resources Management and Serialization System
+
+find Assets directory and write the found files description into .asr file, then serialize from the file to a scene 
+
+subject。 
 
 ![image-20240320223659152](README/4.png)
 
