@@ -18,6 +18,37 @@ I don't know whether will it support DX11/12 or Vulkan in the future or not,it d
 
 The engine contents are as follows.
 
+## Inventory
+
+### Log System(日志系统)
+
+Based on open source header-only library **`spdlog`**
+
+We have three loggers for our log system.
+
+```cpp
+// 核心层，客户端层，编辑器层
+std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
+std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+std::shared_ptr<spdlog::logger> Log::s_EditorConsoleLogger;
+```
+
+核心层，客户端层的日志有两个输出的地方，一个是带颜色的`stdout`，一个是文件Aspect.log.
+
+编辑器层Editor输出日志的地方也有两个，一个是文件APP.log，一个是控制台`EditorConsoleSink`.
+
+均支持多线程。
+
+日志级别有以下5个
+
+```cpp
+Level::Trace
+Level::Info:
+Level::Warn:
+Level::Error
+Level::Fatal
+```
+
 ## My Notes
 
 [Click here](Documentation/如何从零开发游戏引擎.md)

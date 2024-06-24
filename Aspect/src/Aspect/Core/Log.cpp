@@ -16,18 +16,29 @@ namespace Aspect {
 
 	void Log::Init()
 	{
+		// spdlog::sink_ptr管理日志接受sink的生命周期，sink可以是文件、网络、控制台
 		std::vector<spdlog::sink_ptr> logSinks;
+		// 两个接受地：带有颜色的标准输出sink与基础文件sink
 		logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
 		logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("Aspect.log", true));
 
+		// %^: 格式化字符的开头（以颜色输出，如果 sink 支持颜色）
+		// [%T] : 当前时间戳（默认为 ISO 8601 格式，但可以通过 fmt::localtime 格式化选项来更改）
+	    // %n : 日志消息的来源（通常是 logger 的名称）
+		// %v : 日志消息的内容
+	    // %$ : 格式化字符串的结束（在某些 sink 中可能用于添加换行符或其他分隔符）
+		// %l : 日志级别 
 		logSinks[0]->set_pattern("%^[%T] %n: %v%$");
 		logSinks[1]->set_pattern("[%T] [%l] %n: %v");
 
+		// 创建logger,设置最低日志级别，最后flush刷新到sink的位置
+		// core logger
 		s_CoreLogger = std::make_shared<spdlog::logger>("Aspect", begin(logSinks), end(logSinks));
 		spdlog::register_logger(s_CoreLogger);
 		s_CoreLogger->set_level(spdlog::level::trace);
 		s_CoreLogger->flush_on(spdlog::level::trace);
 
+		// client logger
 		s_ClientLogger = std::make_shared<spdlog::logger>("APP", begin(logSinks), end(logSinks));
 		spdlog::register_logger(s_ClientLogger);
 		s_ClientLogger->set_level(spdlog::level::trace);
