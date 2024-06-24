@@ -10,7 +10,7 @@ namespace Aspect
 
 		void SetProjection(float left, float right, float bottom, float top);
 
-		// ·µ»ØÒıÓÃ£¬²»ÄÜ·µ»Øº¯ÊıÄÚ¾Ö²¿±äÁ¿
+		// è¿”å›å¼•ç”¨ï¼Œä¸èƒ½è¿”å›å‡½æ•°å†…å±€éƒ¨å˜é‡
 		const glm::vec3& GetPosition() const { return m_Position; }
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecaculateViewMatrix();}
 
